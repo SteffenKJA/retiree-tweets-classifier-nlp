@@ -55,7 +55,6 @@ def preprocess_tweet(tweet):
     Credit of abdulfatir (github).
     """
 
-    processed_tweet = []
     # Convert to lower case
     tweet = tweet.lower()
     # Replaces URLs with the word URL
@@ -75,17 +74,7 @@ def preprocess_tweet(tweet):
     tweet = handle_emojis(tweet)
     # Replace multiple spaces with a single space
     tweet = re.sub(r'\s+', ' ', tweet)
-    #words = tweet.split()
     # Remove recurring characters in words
     re.sub(r'(.)\1+', r'\1\1', tweet)
-    #print(tweet)
-    
-    #for word in words:
-    #    word = preprocess_word(word)
-    #    if is_valid_word(word):
-            #if use_stemmer:
-            #    word = str(porter_stemmer.stem(word))
-    #        processed_tweet.append(word)
 
-    #return ' '.join(processed_tweet)
     return tweet

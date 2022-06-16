@@ -1,13 +1,9 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
 """
 Created on Mon Jun  4 17:32:31 2018
 
 @author: Steffen_KJ
 """
 
-from __future__ import division
-from __future__ import print_function
 import numpy as np
 import pandas as pd
 from keras.preprocessing.text import Tokenizer
@@ -33,7 +29,7 @@ if use_same_ratio:
     selected_ret_tweets = target == 'Retired'
     normal_tweets = target == 'Normal'
 
-    for x in xrange(len(selected_ret_tweets)):
+    for x in range(len(selected_ret_tweets)):
         if ret_counter >= len(target[normal_tweets]):
             selected_ret_tweets[x] = False
         if selected_ret_tweets[x]:
@@ -59,13 +55,16 @@ embed_dim = 128
 lstm_out = 196  # Dimensionality of the output space
 
 # The network is build as a series of sequential layers.
+
 model = Sequential()
+
 # Embedding takes (vocabulary length, dimensions where the words will be
 # embedded, length of each word).
 # Embedding is one layer in the network which has it own weights which will
 # be trained and optimized.
 model.add(Embedding(max_tokens, embed_dim,
                     input_length=preproc_tweets.shape[1]))
+
 # Flatten the 2D output of Embedding to 1D, required by LSTM.
 model.add(SpatialDropout1D(0.4))
 # LSTM Long Short-Term Memory layer. A form of RNN (Recurrent Neural Network),

@@ -1,3 +1,8 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+from __future__ import division
+from __future__ import print_function
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -36,7 +41,7 @@ if use_same_ratio:
     selected_ret_tweets = target == 'Retired'
     normal_tweets = target == 'Normal'
 
-    for x in range(len(selected_ret_tweets)):
+    for x in xrange(len(selected_ret_tweets)):
         if ret_counter >= len(target[normal_tweets]):
             selected_ret_tweets[x] = False
         if selected_ret_tweets[x]:
