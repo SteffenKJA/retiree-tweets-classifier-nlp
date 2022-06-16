@@ -34,7 +34,6 @@ if use_same_ratio:
             selected_ret_tweets[x] = False
         if selected_ret_tweets[x]:
             ret_counter += 1
-            print(ret_counter)
     mask = selected_ret_tweets + normal_tweets
     tweets = tweets[mask]
     target = target[mask]
@@ -55,7 +54,6 @@ embed_dim = 128
 lstm_out = 196  # Dimensionality of the output space
 
 # The network is build as a series of sequential layers.
-
 model = Sequential()
 
 # Embedding takes (vocabulary length, dimensions where the words will be
@@ -105,8 +103,8 @@ batch_size = 32
 # Train the model
 model.fit(X_train, Y_train, epochs=40, batch_size=batch_size, verbose=2)
 
-# Split the test set into one for the model evaluation and one to count each
-# correct/incorrect designation.
+# Split the test set into a validation set for the model evaluation and one to count each
+# correct/incorrect designation, i.e. a test set.
 validation_size = int(len(X_test)/2.0)
 
 X_validate = X_test[-validation_size:]
@@ -136,6 +134,8 @@ for x in range(len(X_validate)):
 
 print("retired_acc", retired_correct/retired_cnt*100, "%")
 print("normal_acc", normal_correct/normal_cnt*100, "%")
+
+# --------------------------- A simple sanity check -------------------------- #
 
 twt = ['The youth these days have no respect for elders.']
 # vectorizing the tweet by the pre-fitted tokenizer instance
