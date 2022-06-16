@@ -11,7 +11,7 @@ from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
 from keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
 from sklearn.model_selection import train_test_split
-from NN_mods import preprocess_tweet
+from preprocessing_tools import preprocess_tweet
 
 # Extract twitter data
 dfMyData = pd.read_csv('dfMyData.csv')
